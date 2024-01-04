@@ -1,0 +1,309 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #222; /* 보통홈페이지 글자색은 #222 */
+}
+
+ul, li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+/* ==================================================== */
+
+.container{
+    /* background-color: antiquewhite; */
+}
+
+.container .postMainBox{
+    /* background-color: aliceblue; */
+    width: 1280px;
+    margin: 0 auto;
+    padding: 50px;  
+}
+
+.postMainBox table{
+    width: 980px;
+    margin: 0 auto;
+    border-spacing: 20px;
+}
+
+.postMainBox table .postTitle{
+    border-top: 3px solid #222;
+    background-color: #eee;
+}
+
+.postMainBox table .ReviseDeleteBtn{
+    /* border-top: 1px solid #222; */
+    width: 80px;
+}
+
+.postMainBox table .ReviseDeleteBtn ul{
+    /* background-color: rgb(200, 156, 243); */
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.postMainBox table .ReviseDeleteBtn ul li button{
+    background-color: #fff;
+    border: none;
+    font-size: 30px;
+}
+
+.postMainBox table .ReviseDeleteBtn ul li button:hover{
+    cursor:pointer;
+}
+
+.postMainBox table .postInfo{
+    border-top: 1px solid #222;
+    background-color: #eee;
+}
+
+.postMainBox table .postAttach{
+    border-top: 1px solid #222;
+    background-color: #eee;
+}
+
+.postMainBox table .postContent{
+    border-top: 1px solid #222;
+}
+
+.postMainBox table .postContent .postContentImg{
+    /* background-color: aquamarine; */
+    width: 1080px;
+    height: 480px;
+}
+.postMainBox table .postContent .postContentImg img{
+    width: 100%;
+    height: 100%;
+}
+
+.postMainBox table .postRecomm_List{
+    /* background-color: darkblue; */
+    border-top: 1px solid #222;
+}
+
+.postMainBox table .postRecomm_List ul{
+    /* background-color: rgb(197, 156, 238); */
+    display: flex;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.postMainBox table .postRecomm_List ul li{
+    /* background-color: rgb(156, 238, 187); */
+    margin-left: 40px;
+
+}
+
+.postMainBox table .postRecomm_List .like button{
+    background-color: #fff;
+    border: none;
+    font-size: 40px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.postMainBox table .postRecomm_List .like button:hover{
+    cursor:pointer;
+}
+
+.postMainBox table .postRecomm_List .likeNo	 .likeCount{
+    background-color: #fff;
+    border: none;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.postRecomm_List .postListBtn{
+    background-color: #474757;
+    border: none;
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bolder;
+    margin-left: 475px;
+    margin-top: 20px;
+}
+
+.postRecomm_List .postListBtn:hover{
+    background-color: #2d2d38;
+    cursor:pointer;
+}
+
+.postMainBox table .postComment{
+    border-bottom: 3px solid #222;
+ 
+}
+
+.postMainBox table .postComment li{
+    border-top: 1px solid #999;
+    margin-top: 10px;
+}
+
+.postMainBox table .postComment li:last-child{
+       margin-bottom: 30px
+}
+
+.postMainBox table .postComment li div{
+    background-color: #ccc;
+    display: flex;
+}
+
+.postMainBox table .postComment li div i{
+    /* background-color: rgb(248, 199, 150); */
+    padding-left: 15px; 
+}
+
+.postMainBox table .postComment li div span{
+    /* background-color: rgb(248, 199, 199); */
+    width: 150px;
+    padding-left: 15px; 
+}
+
+.postMainBox table .postComment li .commentContent{
+    background-color: #eee;
+    padding-left: 15px;
+}
+
+.postMainBox table .postComment li #replyCommentContent{
+    background-color: #eee;
+    padding-left: 45px;
+}
+
+.postMainBox table .postCommentWrite{
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.postCommentWrite .postCommentWriteText{
+    border: 1px solid #bbb;
+    resize: none;
+    width:	100%;
+    height: 100px;
+    padding: 5px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    
+}
+
+.postCommentWrite .postCommentWriteText:hover{
+    border: 1px solid #2d2d38;
+}
+
+.postCommentWrite .postCommentWriteText:focus{
+    border-color: #2d2d38;
+    outline: 0;
+    border-width: 1px;
+}
+
+.postCommentWrite p{
+	display: flex;
+}
+
+.postCommentWrite .postCommentBtn{
+    background-color: #474757;
+    border: none;
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+
+.postCommentWrite .postCommentBtn:hover{
+    background-color: #2d2d38;
+    cursor:pointer;
+}
+
+.postComment #commentBtn{
+    background-color: #474757;
+    border: none;
+    width: 40px;
+    height: 25px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.postComment #commentBtn:hover{
+    background-color: #2d2d38;
+    cursor:pointer;
+}
+
+
+.postMainBox table .postComment li .replyForm{
+	background-color: #fff;
+	margin-top: 10px; 
+}
+
+.replyForm .relpyText{
+    border: 1px solid #bbb;
+    resize: none;
+    width:	250px;
+    height: 25px;
+    padding: 5px;
+    margin: 0 auto;  
+}
+
+.replyForm .relpyText:hover{
+    border: 1px solid #2d2d38;
+}
+
+.replyForm .relpyText:focus{
+    border-color: #2d2d38;
+    outline: 0;
+    border-width: 1px;
+}
+
+
+.replyForm .relpyBtn{
+    background-color: #474757;
+    border: none;
+    width: 40px;
+    height: 25px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.replyForm .relpyBtn:hover{
+    background-color: #2d2d38;
+    cursor:pointer;
+}
+
+.postCommentWriteText::-webkit-scrollbar {
+    width: 13px;
+}
+.postCommentWriteText::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+.postCommentWriteText::-webkit-scrollbar-track {
+    background-color: #eee;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}

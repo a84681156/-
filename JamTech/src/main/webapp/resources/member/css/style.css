@@ -1,0 +1,412 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #222; /* 보통홈페이지 글자색은 #222 */
+}
+
+ul, li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+/* ==================================================== */
+
+#mainContainer{
+    /* background-color: antiquewhite; */
+    padding: 20px;
+}
+
+#mainConBox{
+    /* background-color: aquamarine; */
+    width: 1280px;
+    margin: 0 auto;
+}
+
+#mainConBox .mainSearch{
+    /* background-color: #ddd; */
+    width: 500px;
+    height: 50px;
+    margin: 0 auto;
+    
+}
+
+/* .mainSearch .mainSearchBtn{
+    background-color: #474757;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #474757;
+    
+}
+
+.mainSearch .mainSearchBtn:hover{
+    background-color: #2d2d38;
+    border: 5px solid #2d2d38;
+}
+
+.mainSearchBtn i{
+    font-size: 15px;
+    color: #fff;
+    
+}
+
+.mainSearch .mainSearchText{
+    width: 400px;
+    height: 50px;
+    border: none;
+    border: 5px solid #474757;
+    font-size: 15px;
+    padding: 0 0 0 15px;
+} */
+
+#mainConBox .mainContent{
+    /* background-color: rgb(245, 119, 119); */
+    margin-top: 20px;
+    display: flex;
+}
+
+.mainContent .mainLeft{
+    /* background-color: darkkhaki; */
+    width: 250px;
+    margin-right: 30px;
+}
+
+.mainLeft .mainLogin{
+    /* background-color: skyblue; */
+    width: 100%;
+    margin: 0 0 20px 0;
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+.mainLogin .mainLoginForm{
+    /* background-color: rgb(92, 92, 202); */
+}
+
+.mainLoginForm ul{
+    /* background-color: tan; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.mainLoginForm ul{
+    margin-left: 15px;
+}
+
+.mainLoginForm .mainLoginFormControl{
+    width: 200px;
+    height: 25px;
+    padding:  0 0 0 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+.mainLoginForm .mainLoginFormControl:hover{
+    border: 1px solid #2d2d38;
+}
+
+.mainLoginForm .mainLoginFormControl:focus{
+    border-color: #2d2d38;
+    outline: 0;
+    border-width: 1px;
+}
+
+.mainLoginForm .mainAutoLogin{
+    /* background-color: rgb(66, 108, 125); */
+    width: 100px;
+    text-align: center;
+    margin-left: 127px;
+}
+
+.mainLoginForm .mainLoginForm_loginBtn{
+    background-color: #474757;
+    border: none;
+    width: 218px;
+    height: 30px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bolder;
+    
+}
+
+.mainLoginForm .mainLoginForm_loginBtn:hover{
+    background-color: #2d2d38;
+    cursor:pointer;
+}
+
+
+.mainLeft .mainPopularPost{
+    /* background-color: antiquewhite; */
+    width: 100%;
+    margin: 20px 0 20px 0;
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+.mainPopularPost ul{
+    /* background-color: sandybrown; */
+}
+
+.mainPopularPost ul li{
+    /* background-color: rgb(168, 239, 199); */
+    height: 30px;
+    padding-left: 10px;
+    border-bottom: 1px solid #474757;
+    font-size: 15px;
+    font-weight: bolder;
+    line-height: 30px;
+}
+
+.mainPopularPost ul li:nth-child(1) {
+    border-top: 1px solid #474757;
+}
+
+.mainLeft .mainTag{
+    /* background-color: rgb(202, 173, 231); */
+    width: 100%;
+    margin: 20px 0 20px 0;
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+.mainTag .mainTagList{
+    /* background-color: aquamarine; */
+}
+
+.mainTagList a{
+    font-size: 14px;
+}
+
+.mainLeft .mainAd{
+    /* background-color: rgb(139, 139, 236); */
+    width: 100%;
+    margin: 20px 0 0 0;
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
+.mainAd a img{
+    width: 100%;
+}
+
+.mainLeft h4{
+    /* background-color: rgb(128, 241, 241); */
+    margin-bottom: 5px;
+}
+
+.mainLeft h4:after{
+    content: "";
+    display: block;
+    width: 8px;
+    border-bottom: 2px solid red;
+    
+}
+
+.mainContent .mainRight{
+    /* background-color: sandybrown; */
+    width: 1000px;
+}
+
+.mainRight .mainRightTop{
+    width: 1000px;
+    height: 300px;
+    margin: 0 0 20px 0;
+    position: relative;
+}
+
+.mainRight .mainSlide{
+    /* background-color: rgb(251, 143, 143); */
+    width: 100%;
+    height: 100%;
+    margin: 0 0 20px 0;
+}
+
+.mainRight .mainSlide div{
+    width: 1000px;
+    height: 300px;
+}
+.mainRight .mainSlide div a img{
+    width: 100%;
+    height: 100%;
+}
+
+.indicaotr .prevArrow{
+    /* background-color: red; */
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 125px;
+    left: 50%;
+    margin-left: -490px;
+}
+
+.indicaotr .prevArrow img{
+    width: 100%;
+    height: 100%;
+}
+
+.indicaotr .nextArrow{
+    /* background-color: red; */
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 125px;
+    right: 50%;
+    margin-right: -490px;
+}
+
+.indicaotr .nextArrow img{
+    width: 100%;
+    height: 100%;
+}
+
+.eventImg_pager{
+    /* background-color: red; */
+    width: 60px;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    bottom: 20px;
+    left: 475px;
+    padding: 0;
+    list-style: none;   
+}
+
+.eventImg_pager li{
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    /*margin: 1px;*/
+    padding: 0;
+    cursor: pointer;
+}
+
+.eventImg_pager li button{
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: 0;
+    background: 0 0;
+}
+
+.eventImg_pager li button:before{
+    font-size: 2.7rem;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '•';
+    text-align: center;
+    opacity: .5;
+    color: #fff;
+}
+.eventImg_pager li.slick-active button:before {
+    opacity: 0.75;
+    color: #555;
+}
+
+.mainRight h2{
+    /* background-color: rgb(149, 149, 238); */
+    height: 30px;
+    line-height: 30px;
+}
+
+.mainRight h2:after {
+    content: "";
+    display: block;
+    width: 15px;
+    border-bottom: 2px solid red;
+}
+
+.mainRight .mainNews{
+    /* background-color: rgb(235, 209, 144); */
+    width: 100%;
+/*     height: 433px; */
+    margin: 20px 0 20px 0;
+}
+
+.main_table{
+    /* background-color: darkkhaki; */
+    margin: 20px 0 0 0;
+    border-spacing: 10px;
+    border: none;
+}
+
+.main_table .main_table_photo{
+    width: 1000px;
+    height: 100px;
+}
+
+.main_table_photo img{
+    width: 100%;
+    height: 100%;
+}
+
+.main_table td{
+    width: 1000px;
+    height: 50px;
+    border-bottom:2px solid #474757 ;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+.mainRight .mainJobs{
+    /* background-color: rgb(188, 235, 144); */
+    width: 100%;
+    /* height: 433px; */
+    margin: 20px 0 20px 0;
+}
+
+.mainRight .mainQA{
+    /* background-color: rgb(144, 221, 235); */
+    width: 100%;
+    height: 300px;
+    margin: 20px 0 0 0;
+}
+
+.mainQA .QAList{
+    display: flex;
+    justify-content: space-around;
+}
+
+.mainQA ul{
+    /* background-color: rgb(117, 117, 190); */
+    width: 300px;
+    margin-top: 20px;
+}
+
+.mainQA ul li{
+    /* background-color: aquamarine; */
+    height: 40px;
+    border-bottom: 2px solid #474757;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bolder;
+    line-height: 40px;
+}
+

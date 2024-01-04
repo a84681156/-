@@ -1,0 +1,134 @@
+
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #222; /* 보통홈페이지 글자색은 #222 */
+}
+
+ul, li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+/* ==================================================== */
+
+
+.pwChangeInfo{
+    /* background-color: aliceblue; */
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 150px;
+    padding: 50px;
+}
+
+.pwChangeInfo .pwChangeInfoCon{
+    /* background-color: aqua; */
+    width: 980px;
+    margin: 0 auto;
+    padding: 20px 0;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+}
+
+.pwChangeInfoCon h1{
+    /* background-color: antiquewhite; */
+    width: 200px;
+    padding: 10px;
+    font-size: 1000;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #aaa;
+}
+
+.pwChangeInfoCon .pwChangeInfoBox{
+    /* background-color: aquamarine; */
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.pwChangeInfoBox h2{
+    background-color: #eee;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.siteForm2{
+    /* background-color: darkcyan; */
+    width: 400px;
+    margin-left: 55px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.pwChangeTitle{
+    /* background-color: rgb(35, 245, 175); */
+    font-size: 15px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.pwChange_formControl{
+    border: 1px solid #ccc;
+    width: 300px;
+    height: 30px;
+    padding: 0 0 0 5px;
+}
+
+.pwChange_formControl{
+    border: 1px solid #ccc;
+    width: 300px;
+    height: 30px;
+}
+
+.pwChange_formControl:hover{
+    border: 1px solid #2d2d38;
+}
+
+.pwChange_formControl:focus{
+    border-color: #2d2d38;
+    outline: 0;
+    border-width: 1px;
+}
+
+.pwChange_btn{
+    background-color: rgb(255, 59, 59);
+    border: none;
+    width: 150px;
+    height: 50px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bolder;
+    margin-left: 415px;
+}
+
+.pwChange_btn:hover{
+    background-color: red;
+    cursor:pointer;
+}
+
+.pwChange_btn a{
+    color: #eee;
+}

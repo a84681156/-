@@ -1,0 +1,228 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #222; /* 보통홈페이지 글자색은 #222 */
+}
+
+ul, li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+/* ==================================================== */
+#header{
+    background-color: #000;
+    /* border-bottom: 1px soild #000; */
+    min-width: 1200px;
+}
+
+#headerIn{
+    /* background-color: #666; */
+    width: 1280px;
+    height: 120px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#headerIn #logo{
+    /* background-color: rgb(11, 155, 107); */
+    width: 200px;
+    height: 110px;
+    position: absolute;
+    top: 5px;
+}
+
+#logo a img{
+    width: 100%;
+    height: 100%;
+}
+
+#headerIn #gnb{
+    /* background-color: red; */
+    height: 30px;
+    position: absolute;
+    top: 80px;
+    right: 0px;
+}
+
+#headerIn #gnb ul{
+    display: flex;
+}
+
+#gnb li{
+    margin-left: 70px;
+    line-height: 30px;
+}
+
+#gnb li a{
+    color: #fff;
+    font-size: 20px;
+}
+
+#gnb li a:hover{
+    color: #aaa;
+}
+
+#headerIn #bfLogin{
+    /* background-color: rgb(101, 101, 247); */
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+
+}
+
+#headerIn #bfLogin ul{
+    display: flex;
+}
+
+#bfLogin li{
+    margin-left: 20px;
+    line-height: 20px;
+}
+
+#bfLogin li a{
+    color: #fff;
+    font-size: 10px;
+}
+
+#bfLogin li a:hover{
+    color: #aaa;
+}
+/* ================================================================= */
+#footer{
+    background-color: #000;
+    /* border-top: 1px soild #000; */
+    min-width: 900px;
+}
+#footerBox{
+    /* background-color: red; */
+    width: 1280px;
+    margin: 0 auto;
+}
+
+#footerNav{
+    /* background-color: #666; */
+    width: 100%;
+    height: 60px;
+    padding: 10px 0;
+    margin: 0 auto;
+}
+
+#footerNav ul{
+    /* background-color: aqua; */
+    width: 800px;
+    height: 60px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#footerNav li a:hover{
+    /* background-color: plum; */
+    color: #bbb;
+}
+
+
+#footerNav a{
+    color: #eee;
+    font-size: 20px;
+}
+
+#footerIn{
+    /* background-color: #aaa; */
+    width: 100%;
+    padding-bottom: 15px;
+    /* height: 200px; */
+}
+
+#footerIn #fInfo{
+    /* background-color: aquamarine; */
+    width: 1280px;
+    height: 100px;
+    margin: 0 auto;
+    border-top: 1px solid #eee;
+    position: relative;
+}
+
+#footerIn #fLogo{
+    /* background-color: darkcyan; */
+   	width: 200px;
+    height: 110px;
+    position: absolute;
+    top: 5px;
+}
+
+#fLogo img{
+    width: 100%;
+    height: 100%;
+}
+
+#fInfo .Info{
+    /* background-color: red; */
+    width: 900px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+
+
+#footerIn #copyright{
+    /* background-color: blue; */
+    width: 300px;
+    height: 70px;
+    margin: 0 auto;
+    margin-bottom: 0;
+}
+
+#fInfo .a{
+    font-size: 20px;
+    color: #eee;
+    
+}
+
+#fInfo .b{
+    color: #eee;
+    border-bottom: 1px solid #eee ;
+}
+
+#fInfo .b:hover{
+    color: #aaa;
+}
+
+#copyright .c{
+    /* background-color: brown; */
+    font-size: 15px;
+    color: #eee;
+    width: 230px;
+    margin: 0 auto;
+    margin-top: 17.5px;
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+#fInfo .footer_bar{
+    display: inline-block;
+    background-color: #eee;
+    width: 2px;
+    height: 17px;
+    vertical-align: top;
+    margin-top: 3px;
+}

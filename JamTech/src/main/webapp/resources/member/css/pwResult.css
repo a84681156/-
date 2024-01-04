@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #222; /* 보통홈페이지 글자색은 #222 */
+}
+
+ul, li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+/* ==================================================== */
+
+.pwChangeResult{
+    /* background-color: aliceblue; */
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 350px;
+    padding: 50px;    
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;;
+}
+
+.pwChangeResult .pwChangeResultBox{
+    background-color: #eee;
+    width: 980px;
+    margin: 0 auto;
+    height: 50px;
+    padding: 10px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.pwChangeResultBox label{
+    /* background-color: salmon; */
+    display: block;
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.pwChangeResult .result_btn{
+    /* background-color: rgb(206, 171, 241); */
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.result_btn a{
+    color: #474757;
+}
+
+.result_btn a:hover{
+    color: #2d2d38;
+    border-bottom: 1px solid #2d2d38;
+}

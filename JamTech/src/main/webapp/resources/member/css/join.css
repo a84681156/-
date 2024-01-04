@@ -1,0 +1,195 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #222; /* 보통홈페이지 글자색은 #222 */
+}
+
+ul, li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+/* ==================================================== */
+
+.join{
+    /* background-color: burlywood; */
+    width: 1280px;
+    margin: 0 auto;
+    margin-top: 1px;
+    padding: 50px;
+    
+}
+
+.join .joinForm{
+    /* background-color: greenyellow; */
+    width: 980px;
+    margin: 0 auto;
+    padding: 20px 0;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+}
+
+.join form h1{
+    /* background-color: rebeccapurple; */
+    width: 200px;
+    padding: 10px;
+    font-size: 1000;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #aaa;
+}
+
+.userInfo{
+    /* background-color: skyblue; */
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.userInfo .site{
+    /* background-color: aquamarine; */
+}
+
+.userInfo h2{
+    background-color: #eee;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.userInfo ul{
+    display: flex;
+
+}
+
+.siteForm{
+    /* background-color: darkcyan; */
+    width: 400px;
+    margin-left: 55px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.siteForm2{
+    /* background-color: darkcyan; */
+    width: 400px;
+    margin-left: 55px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+/* .personal div{
+    background-color: #222;
+    width: 210px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 10px;  
+} */
+
+.join_chkBoxControl_user{
+    margin-left: 3px;
+    margin-right: 20px;
+}
+
+.join_chkBoxControl_emailSms{
+    margin-left: 3px;
+    margin-right: 20px;
+}
+
+
+.infoTitle{
+    /* background-color: rgb(35, 245, 175); */
+    font-size: 15px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.personal{
+    /* background-color: aquamarine; */
+}
+
+.emailSms{
+    /* background-color: aqua; */
+}
+
+.agree_text{
+    font-size: 14px;
+    font-weight: bolder;    
+}
+
+.join_formControl{
+    border: 1px solid #ccc;
+    width: 300px;
+    height: 30px;
+    padding: 0 0 0 5px;
+}
+
+.join_formControl:hover{
+    border: 1px solid #2d2d38;
+}
+
+.join_formControl:focus{
+    border-color: #2d2d38;
+    outline: 0;
+    border-width: 1px;
+}
+
+.doubleCheck{
+    background-color: #ddd;
+    border: none;
+    width: 80px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.doubleCheck:hover{
+    border: 1px solid rgb(3, 3, 204);
+    cursor:pointer;
+}
+
+.doubleCheck i{
+    color: red;
+}
+
+.join_btn{
+    background-color: rgb(255, 59, 59);
+    border: none;
+    width: 150px;
+    height: 50px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bolder;
+    margin-left: 415px;
+}
+
+.join_btn:hover{
+    background-color: red;
+    cursor:pointer;
+}
+
+.join_btn a{
+    color: #eee;
+}

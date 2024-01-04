@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.tech.biz.dao.UserDAO">
+	<!-- <회원기능> -->
+	
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="UserDTO">
+		INSERT INTO user_info(user_no, user_id, user_pw, name, nickname, tel, email, membertype, reception, reg_date)
+		VALUES (seq_user_no.NEXTVAL, #{user_id}, #{user_pw}, #{name}, #{nickname}, #{tel}, #{email}, #{membertype}, #{reception}, SYSDATE)
+	</insert>
+	
+	<!-- id중복확인 -->
+	<select id="idChk" parameterType="String" resultType="int">
+		SELECT count(*)
+		FROM user_info
+		WHERE user_id = #{user_id}
+	</select>
+	
+	<!-- nickname중복확인 -->
+	<select id="nicknameChk" parameterType="String" resultType="int">
+		SELECT count(*)
+		FROM user_info
+		WHERE nickname = #{nickname}
+	</select>
+	
+	<!-- id중복검사 했는지안했는지 검사 -->
+	
+	<!-- nickname중복검사 했는지안했는지 검사 -->
+
+	<!-- 회원정보검색 -->
+	<select id="searchUser" parameterType="String" resultType="UserDTO">
+	 	SELECT nickname, name, tel, email
+		FROM user_info
+	 	WHERE user_id = #{user_id}
+	 </select>
+	 
+	<!-- 회원정보수정 -->
+	<update id="updateUser" parameterType="UserDTO">
+		UPDATE user_info
+		SET tel=#{tel}, email=#{email}
+		WHERE user_id=#{user_id}
+	</update>
+	
+	<!-- 회원삭제(탈퇴) -->
+	<delete id="deleteUser" parameterType="UserDTO">
+		DELETE 
+		FROM user_info 
+		WHERE user_id= #{user_id} AND user_pw = #{user_pw}
+	</delete>
+	
+	<!-- 회원로그인 -->
+	 <select id="loginUser" parameterType="UserDTO" resultType="int">
+	 	SELECT count(*)
+	 	FROM user_info
+	 	WHERE user_id = #{user_id} AND user_pw = #{user_pw}
+	 </select>
+	 
+	 <!-- id찾기 -->
+	 <select id="findId" parameterType="UserDTO" resultType="String">
+	 	SELECT user_id
+	 	FROM user_info
+	 	WHERE name=#{name} AND tel=#{tel} AND email=#{email}
+	 </select>
+	 
+	 <!-- pw찾기 -->
+ 	 <select id="findPw" parameterType="UserDTO" resultType="String">
+	 	SELECT user_pw
+	 	FROM user_info
+	 	WHERE name=#{name} AND tel=#{tel} AND email=#{email} AND user_id=#{user_id}
+	 </select>
+	 
+	 <!-- pw변경 -->
+	 <update id="changePw" parameterType="UserDTO">
+		UPDATE user_info
+		SET user_pw=#{user_pw}
+		WHERE name=#{name} AND tel=#{tel} AND email=#{email} AND user_id=#{user_id}
+	 </update>
+	 
+	 
+	
+	<!-- <관리자기능> -->
+	<!-- 관리자 회원수검색 -->
+	<select id="countUserAll" resultType="int">
+		SELECT count(*) 
+		FROM user_info
+	</select>
+	
+	<!-- 관리자 회원모두삭제 -->
+	<delete id="deleteUserAll">
+		DELETE 
+		FROM user_info
+	</delete>
+	
+	<!-- 관리자회원정보검색 -->
+	<select id="selectUser" parameterType="String" resultType="UserDTO">
+		SELECT name, email, nickname, tel
+		FROM user_info
+		WHERE user_id = #{user_id}
+	</select>
+</mapper>  

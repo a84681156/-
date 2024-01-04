@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+    <mapper namespace="com.tech.biz.dao.JobsBoardDAO">
+    
+    
+    <!-- jobs게시판 Mapper -->
+    
+    <!-- 1. select 게시글 목록,등록일 기준 내림차순 번호기준 내림차순  -->
+   	<select id="selectAll" resultType="JobsBoardDTO">
+		SELECT jobs_post_no, jobs_title, jobs_writer, jobs_content,
+  				jobs_reg_date, jobs_up_date, jobs_cnt, jobs_recommend,
+  				jobs_employ, jobs_type, jobs_part, jobs_local, jobs_career,
+  				jobs_progress, user_no, board_no
+		FROM board_jobs
+		ORDER BY jobs_reg_date DESC, jobs_post_no DESC
+	</select>
+    
+    <!-- 2. select 게시글읽어오기 -->
+    <select id="select"  parameterType="int" resultType="JobsBoardDTO">
+		SELECT jobs_post_no, jobs_title, jobs_writer, jobs_content,
+				jobs_reg_date, jobs_up_date, jobs_cnt, jobs_recommend,
+				jobs_employ, jobs_type, jobs_part, jobs_local, jobs_career,
+				jobs_progress, user_no, board_no
+		FROM board_jobs
+		WHERE jobs_post_no=#{jobs_post_no}
+  	</select>
+  	
+ 	<!-- 3. insert 게시글쓰기 -->
+	<insert id="insert" parameterType="JobsBoardDTO">
+		INSERT INTO board_jobs(jobs_post_no, jobs_title, jobs_writer, jobs_content, jobs_employ, jobs_type, jobs_part, jobs_local, jobs_career, jobs_progress, user_no, board_no)
+		VALUES(seq_jobs_post_no.NEXTVAL, #{jobs_title}, #{jobs_writer}, #{jobs_content}, #{jobs_employ}, #{jobs_type}, #{jobs_part}, #{jobs_local}, #{jobs_career}, #{jobs_progress}, #{user_no}, #{board_no})
+	</insert>
+ 		
+ 	<!-- 4. update 게시글수정 -->
+	<update id="update" parameterType="JobsBoardDTO">
+ 		UPDATE board_jobs
+ 		SET jobs_title=#{jobs_title}, jobs_content=#{jobs_content}, jobs_up_date = SYSDATE, jobs_employ=#{jobs_employ}, jobs_type=#{jobs_type}, jobs_part=#{jobs_part}, jobs_career=#{jobs_career}, jobs_progress=#{jobs_progress}
+ 		WHERE jobs_post_no=#{jobs_post_no} AND jobs_writer = #{jobs_writer}
+	</update>
+ 		
+ 	<!-- 5. delete 게시글삭제 -->
+ 	<delete id="delete" parameterType="map">
+  		DELETE
+  		FROM board_jobs
+  		WHERE jobs_post_no=#{jobs_post_no} AND jobs_writer=#{jobs_writer}
+  	</delete>
+ 	
+ 	<!-- 6. select 전체 게시글 개수 -->
+ 	<select id="count" resultType="int">
+	  		SELECT count(*)
+  			FROM board_jobs
+  	</select>
+  	
+ 	<!-- 7. update 게시글조회수 증가 -->
+ 	<update id="increaseCnt" parameterType="int">
+			UPDATE board_jobs
+			SET jobs_cnt = jobs_cnt + 1
+			WHERE jobs_post_no=#{jobs_post_no}
+	</update>
+	
+ 	<!-- 8. update 게시글추천수 증가 -->
+ 	<update id="increaseRecommend" parameterType="int">
+			UPDATE board_jobs
+			SET jobs_recommend = jobs_recommend + 1
+			WHERE jobs_post_no=#{jobs_post_no}
+	</update>
+	
+	<!-- 8-1. update 게시글추천수 취소 -->
+	<update id="decreaseRecommend" parameterType="int">
+		    UPDATE board_jobs
+		    SET jobs_recommend = jobs_recommend - 1
+		    WHERE jobs_post_no=#{jobs_post_no}
+    </update>
+    
+    <!-- 8-2.게시글추천수 개수 -->
+    <select id="recommendCnt" parameterType="int" resultType="int">
+    	SELECT jobs_recommend
+    	FROM board_jobs
+    	WHERE jobs_post_no=#{jobs_post_no}
+    </select>
+	
+ 	<!-- 9. select 게시글페이징 -->
+ 	<select id="selectPage" parameterType="map" resultType="JobsBoardDTO">
+			SELECT * 
+			FROM (SELECT ROWNUM rNum, A.*
+					FROM (SELECT jobs_post_no, jobs_title, jobs_writer, jobs_content,
+								jobs_reg_date, jobs_up_date, jobs_cnt, jobs_recommend,
+								jobs_employ, jobs_type, jobs_part, jobs_local, jobs_career,
+								jobs_progress, user_no, board_no
+	  				
+							FROM board_jobs
+							ORDER BY jobs_reg_date DESC, jobs_post_no DESC) A
+					)
+			WHERE rNum between (NVL(#{page} , 0)-1) * #{pageSize}+1 AND (NVL(#{page} , 0) * #{pageSize}) 
+			ORDER BY jobs_reg_date DESC, jobs_post_no DESC
+	</select>
+ 	
+ 	<!-- 10. select 게시글검색 -->
+	<select id="searchSelectPage" parameterType="SearchCondition" resultType="JobsBoardDTO">
+		SELECT * 
+		FROM (SELECT ROWNUM rNum, A.*
+				FROM (SELECT jobs_post_no, jobs_title, jobs_writer, jobs_content,
+							jobs_reg_date, jobs_up_date, jobs_cnt, jobs_recommend,
+							jobs_employ, jobs_type, jobs_part, jobs_local, jobs_career,
+							jobs_progress, user_no, board_no
+	  				
+						FROM board_jobs
+						WHERE 1=1 <include refid="searchCondition"/>
+						ORDER BY jobs_reg_date DESC, jobs_post_no DESC) A
+				)
+		WHERE rNum between (NVL(#{page} , 0)-1) * #{pageSize}+1 AND (NVL(#{page} , 0) * #{pageSize})  
+		ORDER BY jobs_reg_date DESC, jobs_post_no DESC
+	</select>
+	
+	<!-- 11.게시글검색 개수 확인 -->
+	<select id="searchResultCnt" parameterType="SearchCondition" resultType="int">
+		SELECT count(*)
+		FROM board_jobs
+		WHERE 1=1 <include refid="searchCondition"/>
+	</select>
+	
+	<!-- 12.검색 컨디션모드 sql -->
+	<sql id = "searchCondition">
+		<if test="keyword !=null and keyword != ''">
+			<choose>
+				<when test='option == "T"'>
+					AND jobs_title LIKE '%'||#{keyword}||'%'
+				</when>
+				<when test='option == "W"'>
+					AND jobs_writer LIKE '%'||#{keyword}||'%'
+				</when>
+				<otherwise>
+					AND (jobs_title LIKE '%'||#{keyword}||'%' or jobs_content LIKE '%'||#{keyword}||'%')
+				</otherwise>
+			</choose>
+		</if>
+	</sql>
+	
+	<!-- index화면 -->
+    <!-- newJobs -->
+    <select id="newJobs" resultType="JobsBoardDTO">
+   	<![CDATA[
+		SELECT jobs_title, jobs_writer, jobs_post_no
+		FROM board_jobs
+		WHERE ROWNUM<=4
+		ORDER BY jobs_reg_date DESC
+	]]>
+  	</select>
+  </mapper>
+ 	

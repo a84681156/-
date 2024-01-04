@@ -1,0 +1,113 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #222; /* 보통홈페이지 글자색은 #222 */
+}
+
+ul, li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+/* ==================================================== */
+
+.container{
+    /* background-color: aliceblue; */
+    width: 1280px;
+    margin: 0 auto;
+    padding: 50px;
+    /* margin-top: 150px;  */
+}
+
+.container .userInfoAlterBox{
+    /* background-color: antiquewhite; */
+    width: 980px;
+    margin: 0 auto;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    padding: 20px 0;
+}
+
+.userInfoAlterBox h2{
+    /* background-color: rgb(198, 154, 241); */
+    width: 200px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid #aaa;
+}
+
+
+
+.userInfoAlterInfo .userInfoAlterTable{
+    width: 680px;
+    height: 300px;
+    margin: 0 auto;
+    border-spacing: 15px;
+    border: 1px solid #ddd;  
+}
+
+.userInfoAlterInfo .userInfoAlterTable th{
+    background-color: #eee;
+}
+
+.userInfoAlterInfo .userInfoAlterTable td{
+    padding-left: 10px;
+    border-left: 3px solid #222;
+}
+
+.userInfoAlterTable .alter_formControl{
+    border: 1px solid #ccc;
+    width: 300px;
+    height: 30px;
+    padding: 0 0 0 5px;
+}
+
+.userInfoAlterTable .alter_formControl:hover{
+    border: 1px solid #2d2d38;
+}
+
+.userInfoAlterTable .alter_formControl:focus{
+    border-color: #2d2d38;
+    outline: 0;
+    border-width: 1px;
+}
+
+.userInfoAlterBox .alterBtnBox{
+    display: flex;
+    margin-left: 380px;
+}
+
+.alterBtnBox a .alterBtn{
+    background-color: #474757;
+    border: none;
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.alterBtnBox a .alterBtn:hover{
+    background-color: #2d2d38;
+    cursor:pointer;
+}

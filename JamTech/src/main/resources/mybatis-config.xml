@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- db에서 null허용인데도 jdbc에서 null을 못받아드리는 에러가 발생할때 jdbc가 null을 이해할수 있도록 하는 설정 -->
+	<settings>
+		<setting name="cacheEnabled" value="false"/>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	
+	<!-- 특정 클래스의 별칭을 지정 : type의 긴 이름의 BoardDTO를 alias의 그냥 board로 이름을 지정 -->
+	<typeAliases>
+		<typeAlias alias="UserDTO" type="com.tech.biz.domain.UserDTO"/>
+		<typeAlias alias="CrewsBoardDTO" type="com.tech.biz.domain.CrewsBoardDTO"/>
+		<typeAlias alias="JobsBoardDTO" type="com.tech.biz.domain.JobsBoardDTO"/>
+		<typeAlias alias="NewsBoardDTO" type="com.tech.biz.domain.NewsBoardDTO"/>
+		<typeAlias alias="NoticeBoardDTO" type="com.tech.biz.domain.NoticeBoardDTO"/>
+		<typeAlias alias="QABoardDTO" type="com.tech.biz.domain.QABoardDTO"/>
+		<typeAlias alias="CrewsCommentDTO" type="com.tech.biz.domain.CrewsCommentDTO"/>
+		<typeAlias alias="JobsCommentDTO" type="com.tech.biz.domain.JobsCommentDTO"/>
+		<typeAlias alias="NewsCommentDTO" type="com.tech.biz.domain.NewsCommentDTO"/>
+		<typeAlias alias="QACommentDTO" type="com.tech.biz.domain.QACommentDTO"/>
+		<typeAlias alias="SearchCondition" type="com.tech.biz.domain.SearchCondition"/>
+	</typeAliases>
+	
+</configuration>

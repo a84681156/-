@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+    <mapper namespace="com.tech.biz.dao.NewsBoardDAO">
+    
+    
+    <!-- news게시판 Mapper -->
+    
+    <!-- 1. select 게시글 목록,등록일 기준 내림차순 번호기준 내림차순  -->
+   	<select id="selectAll" resultType="NewsBoardDTO">
+		SELECT news_post_no, news_title, news_writer, news_content,
+  				news_reg_date, news_up_date, news_cnt, news_recommend,
+  				admns_no, board_no
+		FROM board_news
+		ORDER BY news_reg_date DESC, news_post_no DESC
+	</select>
+    
+    <!-- 2. select 게시글읽어오기 -->
+    <select id="select"  parameterType="int" resultType="NewsBoardDTO">
+		SELECT news_post_no, news_title, news_writer, news_content,
+				news_reg_date, news_up_date, news_cnt, news_recommend,
+				admns_no, board_no
+		FROM board_news
+		WHERE news_post_no=#{news_post_no}
+  	</select>
+  	
+ 	<!-- 3. insert 게시글쓰기 -->
+	<insert id="insert" parameterType="NewsBoardDTO">
+		INSERT INTO board_news(news_post_no, news_title, news_writer, news_content, admns_no, board_no)
+		VALUES(seq_news_post_no.NEXTVAL, #{news_title}, #{news_writer}, #{news_content}, #{admns_no}, #{board_no})
+	</insert>
+ 		
+ 	<!-- 4. update 게시글수정 -->
+	<update id="update" parameterType="NewsBoardDTO">
+ 		UPDATE board_news
+ 		SET news_title=#{news_title}, news_content=#{news_content}, news_up_date = SYSDATE
+ 		WHERE news_post_no=#{news_post_no} AND news_writer = #{news_writer}
+	</update>
+ 		
+ 	<!-- 5. delete 게시글삭제 -->
+ 	<delete id="delete" parameterType="map">
+  		DELETE
+  		FROM board_news
+  		WHERE news_post_no=#{news_post_no} AND news_writer=#{news_writer}
+  	</delete>
+ 	
+ 	<!-- 6. select 전체 게시글 개수 -->
+ 	<select id="count" resultType="int">
+	  		SELECT count(*)
+  			FROM board_news
+  	</select>
+  	
+ 	<!-- 7. update 게시글조회수 증가 -->
+ 	<update id="increaseCnt" parameterType="int">
+			UPDATE board_news
+			SET news_cnt = news_cnt + 1
+			WHERE news_post_no=#{news_post_no}
+	</update>
+	
+ 	<!-- 8. update 게시글추천수 증가 -->
+ 	<update id="increaseRecommend" parameterType="int">
+			UPDATE board_news
+			SET news_recommend = news_recommend + 1
+			WHERE news_post_no=#{news_post_no}
+	</update>
+	
+ 	<!-- 9. select 게시글페이징 -->
+ 	<select id="selectPage" parameterType="map" resultType="NewsBoardDTO">
+			SELECT * 
+			FROM (SELECT ROWNUM rNum, A.*
+					FROM (SELECT news_post_no, news_title, news_writer, news_content,
+								news_reg_date, news_up_date, news_cnt, news_recommend,
+								admns_no, board_no
+	  				
+							FROM board_news
+							ORDER BY news_reg_date DESC, news_post_no DESC) A
+					)
+			WHERE rNum between (NVL(#{page} , 0)-1) * #{pageSize}+1 AND (NVL(#{page} , 0) * #{pageSize}) 
+			ORDER BY news_reg_date DESC, news_post_no DESC
+	</select>
+ 	
+ 	<!-- 10. select 게시글검색 -->
+	<select id="searchSelectPage" parameterType="SearchCondition" resultType="NewsBoardDTO">
+		SELECT * 
+		FROM (SELECT ROWNUM rNum, A.*
+				FROM (SELECT news_post_no, news_title, news_writer, news_content,
+							news_reg_date, news_up_date, news_cnt, news_recommend,
+							admns_no, board_no
+	  				
+						FROM board_news
+						WHERE 1=1 <include refid="searchCondition"/>
+						ORDER BY news_reg_date DESC, news_post_no DESC) A
+				)
+		WHERE rNum between (NVL(#{page} , 0)-1) * #{pageSize}+1 AND (NVL(#{page} , 0) * #{pageSize})  
+		ORDER BY news_reg_date DESC, news_post_no DESC
+	</select>
+	
+	<!-- 11.게시글검색 개수 확인 -->
+	<select id="searchResultCnt" parameterType="SearchCondition" resultType="int">
+		SELECT count(*)
+		FROM board_news
+		WHERE 1=1 <include refid="searchCondition"/>
+	</select>
+	
+	<!-- 12.검색 컨디션모드 sql -->
+	<sql id = "searchCondition">
+		<if test="keyword !=null and keyword != ''">
+			<choose>
+				<when test='option == "T"'>
+					AND news_title LIKE '%'||#{keyword}||'%'
+				</when>
+				<when test='option == "W"'>
+					AND news_writer LIKE '%'||#{keyword}||'%'
+				</when>
+				<otherwise>
+					AND (news_title LIKE '%'||#{keyword}||'%' or news_content LIKE '%'||#{keyword}||'%')
+				</otherwise>
+			</choose>
+		</if>
+	</sql>
+	
+	<!-- index화면  -->
+    <!-- 1. popularNews  -->
+   	<select id="popularNews" resultType="NewsBoardDTO">
+   	<![CDATA[
+		SELECT news_title, news_post_no
+		FROM board_news
+		WHERE ROWNUM<=10
+		ORDER BY news_recommend DESC
+   	]]>
+	</select>
+    
+    <!-- 2. newNews -->
+    <select id="newNews" resultType="NewsBoardDTO">
+    <![CDATA[
+		SELECT news_title, news_writer, news_post_no
+		FROM board_news
+		WHERE ROWNUM<=4
+		ORDER BY news_reg_date DESC
+	]]>
+  	</select>
+  </mapper>
+ 	

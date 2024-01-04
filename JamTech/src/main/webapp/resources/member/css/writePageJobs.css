@@ -1,0 +1,182 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #222; /* 보통홈페이지 글자색은 #222 */
+}
+
+ul, li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+/* ==================================================== */
+.container{
+    /* background-color: aliceblue; */
+    padding: 50px 0;
+}
+
+.container .writePageBox{
+    /* background-color: antiquewhite; */
+    width: 980px;
+    margin: 0 auto;
+    padding: 20px 0;
+    border-top: 3px solid #222;
+    border-bottom: 3px solid #222;
+}
+
+.writePageBox h1{
+    /* background-color: salmon; */
+    width: 200px;
+    text-align: center;
+    margin-left: 450px;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #222;
+}
+
+.writePageBox form{
+    /* background-color: violet; */
+    width: 980px;
+    margin: 0 auto;
+    /* border-top: 1px solid #222;
+    border-bottom: 1px solid #222; */
+}
+
+.writePageBox form table{
+    border-spacing: 10px;
+}
+
+.writePageBox form table tr:nth-child(2) td{
+    border-top: 1px solid #222;
+}
+
+.writePageBox form table tr:nth-child(2) td select{
+    text-align: center;
+    text-align-last: center;
+    width: 100px;
+    height: 20px;
+    background: url('https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png') calc(100% - 5px) center no-repeat;
+    background-size: 20px;
+    /* padding: 5px 30px 5px 10px; */
+    border: 1px solid #aaa;
+    outline: 0 none;
+}
+
+.writePageBox form table tr:nth-child(2) td select:hover{
+    border: 1px solid #2d2d38;
+}
+  
+  .writePageBox form table tr:nth-child(2) td select:focus{
+    border-color: #2d2d38;
+    outline: 0;
+    border-width: 1px;
+  }
+  
+  .writePageBox form table tr:nth-child(2) td select option {
+    background: black;
+    color: #fff;
+    padding: 3px 0;
+  }
+
+.writePageBox form label,div{
+    /* background-color: rgb(159, 238, 140); */
+    font-size: 15px;
+    margin-right: 5px;
+}
+
+.writePageBox form .formControl{
+    width: 975px;
+    height: 30px;
+    margin: 0px 0px -5px 0px;
+    border: none;
+    resize: none;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    padding: 0 0 0 5px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.writePageBox form .formControl:hover{
+    border: 1px solid #2d2d38;
+}
+
+.writePageBox form .formControl:focus{
+    border-color: #2d2d38;
+    outline: 0;
+    border-width: 1px;
+}
+
+
+.writePageBox form .contentForm{
+    margin: 0px 0px -5px 0px;
+    border: none;
+    resize: none;
+    width: 976px;
+    height: 600px;
+    border: 1px solid #ccc;
+    padding: 0 0 0 5px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.writePageBox form .contentForm:hover{
+    border: 1px solid #2d2d38;
+}
+
+.writePageBox form .contentForm:focus{
+    border-color: #2d2d38;
+    outline: 0;
+    border-width: 1px;
+}
+
+.contentForm::-webkit-scrollbar {
+    width: 13px;
+}
+.contentForm::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+.contentForm::-webkit-scrollbar-track {
+    background-color: #eee;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+
+.writePageBox .writeBtnBox{
+    display: flex;
+    margin-left: 380px;
+}
+
+.writeBtnBox a .writeBtn{
+    background-color: #474757;
+    border: none;
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.writeBtnBox a .writeBtn:hover{
+    background-color: #2d2d38;
+    cursor:pointer;
+}

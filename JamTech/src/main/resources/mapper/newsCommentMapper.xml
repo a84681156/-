@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.tech.biz.dao.NewsCommentDAO">
+  	<!-- 1. select 댓글번호에 해당하는 댓글 보여주기 -->
+  	<select id="select"  parameterType="int" resultType="NewsCommentDTO">
+		SELECT news_comment_no, news_comment_content, news_comment_writer, news_comment_reg_date, news_comment_up_date, news_comment_pcno, user_no, news_post_no
+		FROM comment_news
+		WHERE news_comment_no=#{news_comment_no}
+  	</select>
+  	
+  	<!-- 2. select 전체 댓글 개수 -->
+  	<select id="count" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM comment_news
+		WHERE news_post_no=#{news_post_no}
+  	</select>
+  	
+  	<!-- 3. insert 댓글 추가 (게시글 번호 제목 내용 작성자) -->
+  	<insert id="insert" parameterType="NewsCommentDTO">
+		INSERT INTO comment_news(news_comment_no, news_comment_content, news_comment_writer, news_comment_pcno, user_no, news_post_no)
+		VALUES(seq_news_comment_no.NEXTVAL, #{news_comment_content}, #{news_comment_writer}, #{news_comment_pcno}, #{user_no}, #{news_post_no})
+  	</insert>
+  	
+  	<!-- 4. update 번호에 해당하는 댓글의 내용변경 -->
+  	<update id="update" parameterType="NewsCommentDTO">
+  		UPDATE comment_news
+  		SET news_comment_content=#{news_comment_content}, news_comment_up_date=SYSDATE
+  		WHERE news_comment_no=#{news_comment_no} AND news_comment_writer = #{news_comment_writer}
+  	</update>
+  	
+  	<!-- 5. delete 댓글 번호와 작성자가 일치할 때 게시글 삭제 -->
+  	<delete id="delete" parameterType="map">
+  		DELETE
+  		FROM comment_news
+  		WHERE news_comment_no=#{news_comment_no} AND news_comment_writer = #{news_comment_writer}
+  	</delete>
+  	
+	<!-- 6. 댓글 목록, 등록일 기준으로 내림차순. 번호를 기준으로 내림차순 -->
+	<select id="selectAll" parameterType="int" resultType="NewsCommentDTO">
+		SELECT news_comment_no, news_post_no, NVL(news_comment_pcno,news_comment_no) news_comment_pcno, news_comment_content, news_comment_writer, news_comment_reg_date, news_comment_up_date
+		FROM comment_news
+		WHERE news_post_no=#{news_post_no}
+		ORDER BY news_comment_pcno ASC, news_comment_no ASC, news_post_no ASC
+	</select>
+	
+  	<!-- 7. 관리자 댓글 삭제 -->
+  	<delete id="deleteForAdmin" parameterType="int">
+  		DELETE
+  		FROM comment_news
+  		WHERE news_comment_no=#{news_comment_no}
+  	</delete>
+  	
+  	<!-- 8. 댓글 전체 삭제 -->
+	<delete id="deleteAll" parameterType="int">
+		DELETE 
+		FROM comment_news
+		WHERE news_post_no= #{news_post_no}
+  	</delete>
+  	
+  </mapper>

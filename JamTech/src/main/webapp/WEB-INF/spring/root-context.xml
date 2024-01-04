@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:context="http://www.springframework.org/schema/context" 
+		xmlns:p="http://www.springframework.org/schema/p" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:mvc="http://www.springframework.org/schema/mvc" 
+		xmlns:cache="http://www.springframework.org/schema/cache" 
+		xmlns:aop="http://www.springframework.org/schema/aop" 
+		xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+		http://www.springframework.org/schema/cache 
+		http://www.springframework.org/schema/cache/spring-cache.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- jdbc설정추가(데이터 소스 추가) -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+		<property name="username" value="tech"></property>
+		<property name="password" value="1234"></property>
+	</bean>
+	
+	<!-- MultipartResolver 설정 --> 
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+		<property name="maxUploadSize" value="100000000" /> 
+		<property name="maxInMemorySize" value="100000000" /> 
+	</bean> 
+
+	<!-- SqlSessionFactoryBean을 이용하기위한 설정 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
+		<property name="dataSource" ref="dataSource"></property>
+		
+		<!-- mybatis설정파일위치 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+		
+		<!-- sql담긴 파일의 위치를 패턴으로 지정 -->
+		<property name="mapperLocations" value="classpath:mapper/**/*Mapper.xml"></property>
+	</bean>
+
+	<!-- sqlSessionFactory를 sqlSession으로 빈등록 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- 어노테이션 사용하기위한 컨텍스트 빈등록 -->
+	<context:component-scan base-package="com.tech.biz"></context:component-scan>
+</beans>

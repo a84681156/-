@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+    <mapper namespace="com.tech.biz.dao.CrewsBoardDAO">
+    
+    
+    <!-- crew게시판 Mapper -->
+    
+    <!-- 1. select 게시글 목록,등록일 기준 내림차순 번호기준 내림차순  -->
+   	<select id="selectAll" resultType="CrewsBoardDTO">
+		SELECT crew_post_no, crew_title, crew_writer, crew_content,
+  				crew_reg_date, crew_up_date, crew_cnt, crew_recommend,
+  				crew_local, crew_career, crew_time, crew_progress,
+  				user_no, board_no
+		FROM board_crew
+		ORDER BY crew_reg_date DESC, crew_post_no DESC
+	</select>
+    
+    <!-- 2. select 게시글읽어오기 -->
+    <select id="select"  parameterType="int" resultType="CrewsBoardDTO">
+		SELECT crew_post_no, crew_title, crew_writer, crew_content,
+				crew_reg_date, crew_up_date, crew_cnt, crew_recommend,
+				crew_local, crew_career, crew_time, crew_progress,
+				user_no, board_no
+		FROM board_crew
+		WHERE crew_post_no=#{crew_post_no}
+  	</select>
+  	
+ 	<!-- 3. insert 게시글쓰기 -->
+	<insert id="insert" parameterType="CrewsBoardDTO" useGeneratedKeys="true" keyProperty="crew_post_no">
+	
+	    <selectKey keyProperty="crew_post_no" resultType="int" order="BEFORE">
+	    	SELECT seq_crew_post_no.NEXTVAL FROM DUAL
+	    </selectKey>
+	
+		INSERT INTO board_crew(crew_post_no, crew_title, crew_writer, crew_content, crew_local, crew_career, crew_time, crew_progress, user_no, board_no)
+		VALUES(#{crew_post_no}, #{crew_title}, #{crew_writer}, #{crew_content}, #{crew_local}, #{crew_career}, #{crew_time}, #{crew_progress}, #{user_no}, #{board_no})
+	</insert>
+	
+	<!-- 3-1.첨부파일 업로드 -->
+    <insert id="insertFile" parameterType="map">
+		INSERT INTO file_crew(crew_file_no, crew_post_no, crew_org_file_name, crew_srv_file_name, crew_file_size)
+		VALUES(seq_crew_file_no.NEXTVAL, #{crew_post_no}, #{crew_org_file_name}, #{crew_srv_file_name}, #{crew_file_size})
+    </insert>
+    
+    <!-- 3-2.첨부파일 조회 -->
+	<select id="selectFileList" parameterType="int" resultType="map">
+		SELECT crew_file_no, crew_org_file_name,
+			   ROUND(crew_file_size/1024,1) AS crew_file_size
+		FROM file_crew
+		WHERE crew_post_no = #{crew_post_no}
+		AND crew_del_gb = 'N'
+      	ORDER BY crew_file_no ASC
+	</select>
+	
+	<!-- 3-3.첨부파일 다운 -->
+	<select id="selectFileInfo" parameterType="int" resultType="map">
+		SELECT crew_srv_file_name, crew_org_file_name,  crew_srv_file_name
+		FROM file_crew
+		WHERE crew_file_no = #{crew_file_no}
+	</select>
+	
+	<!-- 3-4.다중첨부파일 및 첨부파일 수정삭제  -->
+    <update id="updateFile" parameterType="map">
+    	UPDATE file_crew 
+    	SET crew_del_gb = 'Y'
+    	WHERE crew_file_no = #{crew_file_no}
+    </update>
+ 		
+ 	<!-- 4. update 게시글수정 -->
+	<update id="update" parameterType="CrewsBoardDTO">
+ 		UPDATE board_crew
+ 		SET crew_title=#{crew_title}, crew_content=#{crew_content}, crew_up_date = SYSDATE, crew_local=#{crew_local}, crew_career=#{crew_career}, crew_time=#{crew_time}, crew_progress=#{crew_progress}
+ 		WHERE crew_post_no=#{crew_post_no} AND crew_writer = #{crew_writer}
+	</update>
+ 		
+ 	<!-- 5. delete 게시글삭제 -->
+ 	<delete id="delete" parameterType="map">
+  		DELETE
+  		FROM board_crew
+  		WHERE crew_post_no=#{crew_post_no} AND crew_writer=#{crew_writer}
+  	</delete>
+ 	
+ 	<!-- 6. select 전체 게시글 개수 -->
+ 	<select id="count" resultType="int">
+	  		SELECT count(*)
+  			FROM board_crew
+  	</select>
+  	
+ 	<!-- 7. update 게시글조회수 증가 -->
+ 	<update id="increaseCnt" parameterType="CrewsBoardDTO">
+			UPDATE board_crew
+			SET crew_cnt = crew_cnt + 1
+			WHERE crew_post_no=#{crew_post_no}
+	</update>
+	
+	
+ 	<!-- 8. update 게시글추천수 증가 -->
+ 	<update id="increaseRecommend" parameterType="int">
+			UPDATE board_crew
+			SET crew_recommend = crew_recommend + 1
+			WHERE crew_post_no=#{crew_post_no}
+	</update>
+	
+	<!-- 8-1. update 게시글추천수 취소 -->
+	<update id="decreaseRecommend" parameterType="int">
+		    UPDATE board_crew
+		    SET crew_recommend = crew_recommend - 1
+		    WHERE crew_post_no=#{crew_post_no}
+    </update>
+    
+    <!-- 8-2.게시글추천수 개수 -->
+    <select id="recommendCnt" parameterType="int" resultType="int">
+    	SELECT crew_recommend
+    	FROM board_crew
+    	WHERE crew_post_no=#{crew_post_no}
+    </select>
+	
+	
+ 	<!-- 9. select 게시글페이징 -->
+ 	<select id="selectPage" parameterType="map" resultType="CrewsBoardDTO">
+			SELECT * 
+			FROM (SELECT ROWNUM rNum, A.*
+					FROM (SELECT crew_post_no, crew_title, crew_writer, crew_content,
+	  							crew_reg_date, crew_up_date, crew_cnt, crew_recommend,
+	  							crew_local, crew_career, crew_time, crew_progress,
+	  							user_no, board_no
+	  				
+							FROM board_crew
+							ORDER BY crew_reg_date DESC, crew_post_no DESC) A
+					)
+			WHERE rNum between (NVL(#{page} , 0)-1) * #{pageSize}+1 AND (NVL(#{page} , 0) * #{pageSize}) 
+			ORDER BY crew_reg_date DESC, crew_post_no DESC
+	</select>
+ 	
+ 	<!-- 10. select 게시글검색 -->
+	<select id="searchSelectPage" parameterType="SearchCondition" resultType="CrewsBoardDTO">
+		SELECT * 
+		FROM (SELECT ROWNUM rNum, A.*
+				FROM (SELECT crew_post_no, crew_title, crew_writer, crew_content,
+  							crew_reg_date, crew_up_date, crew_cnt, crew_recommend,
+	  						crew_local, crew_career, crew_time, crew_progress,
+	  						user_no, board_no
+	  				
+						FROM board_crew
+						WHERE 1=1 <include refid="searchCondition"/>
+						ORDER BY crew_reg_date DESC, crew_post_no DESC) A
+				)
+		WHERE rNum between (NVL(#{page} , 0)-1) * #{pageSize}+1 AND (NVL(#{page} , 0) * #{pageSize})  
+		ORDER BY crew_reg_date DESC, crew_post_no DESC
+	</select>
+	
+	<!-- 11.게시글검색 개수 확인 -->
+	<select id="searchResultCnt" parameterType="SearchCondition" resultType="int">
+		SELECT count(*)
+		FROM board_crew
+		WHERE 1=1 <include refid="searchCondition"/>
+	</select>
+	
+	<!-- 12.검색 컨디션모드 sql -->
+	<sql id = "searchCondition">
+		<if test="keyword !=null and keyword != ''">
+			<choose>
+				<when test='option == "T"'>
+					AND crew_title LIKE '%'||#{keyword}||'%'
+				</when>
+				<when test='option == "W"'>
+					AND crew_writer LIKE '%'||#{keyword}||'%'
+				</when>
+				<otherwise>
+					AND (crew_title LIKE '%'||#{keyword}||'%' or crew_content LIKE '%'||#{keyword}||'%')
+				</otherwise>
+			</choose>
+		</if>
+	</sql>
+  </mapper>
+ 	

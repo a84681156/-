@@ -1,0 +1,151 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #222; /* 보통홈페이지 글자색은 #222 */
+}
+
+ul, li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+/* ==================================================== */
+
+#agree{
+    /* background-color: rgb(243, 197, 140); */
+    width: 1280px;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+#agree .agreeForm{
+    /* background-color: #666; */
+    width: 980px;
+    margin: 0 auto;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    padding: 20px 0;
+}
+
+#agree h1{
+    /* background-color: aqua; */
+    width: 130px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid #aaa;
+}
+
+.joinAgreeBox{
+    /* background-color: aquamarine; */
+    width: 978px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+.personalInfoBox{
+    /* background-color: rgb(30, 128, 95); */
+    width: 978px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+.allAgree{
+    background-color: #eee;
+    width: 978px;
+    height: 50px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+.allAgree p{
+    /* background-color: rebeccapurple; */
+    height: 30px;
+    padding: 10px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bolder;
+    color: rgb(62, 49, 247);
+}
+
+.allAgree p .b{
+    /* background-color: red; */
+    margin-left: 220px;
+    color: #222;
+}
+
+.a{
+    background-color: #eee;
+    height: 30px;
+    padding: 10px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+
+#agree form{
+    /* background-color: #222; */
+}
+
+#agree form .btn{
+    background-color: rgb(255, 59, 59);
+    border: none;
+    width: 150px;
+    height: 50px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bolder;
+    margin-left: 423px;
+}
+
+#agree form .btn:hover{
+    background-color: red;
+    cursor: pointer;
+}
+
+
+#agree form .Term{
+    margin: 0px 0px -5px 0px;
+    border: none;
+    resize: none;
+    width: 978px;
+    height: 250px;
+}
+
+.Term::-webkit-scrollbar {
+    width: 13px;
+}
+.Term::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+.Term::-webkit-scrollbar-track {
+    background-color: #eee;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}

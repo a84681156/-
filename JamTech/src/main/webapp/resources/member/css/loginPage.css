@@ -1,0 +1,180 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    color: #222; /* 보통홈페이지 글자색은 #222 */
+}
+
+ul, li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+/* ==================================================== */
+
+#login{
+    /* background-color: aquamarine; */
+    width: 1280px;
+    margin: 0 auto;
+    padding: 50px;
+    margin-top: 100px;
+}
+
+.loginBox{
+    /* background-color: bisque; */
+    width: 600px;
+    height: 435px;
+    margin: 0 auto;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    padding: 20px 0;
+}
+
+.loginBox h2{
+    /* background-color: #ddd; */
+    width: 100px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid #aaa;
+}
+
+.loginForm{
+    /* background-color: #eee; */
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    padding: 20px;
+    /* border: 1px solid #aaa; */
+}
+
+#msg{
+    height: 20px;
+    text-align:center;
+    font-size:15px;
+    color:red;
+    margin-bottom: 10px;
+}
+
+.loginForm .text .loginFormTitle{
+    color: #555;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.loginForm .login_formControl{
+    padding: 0px 0px 0px 15px;
+    width: 358px;
+    height: 40px;
+    border: 1px solid #ccc;
+}
+
+.loginForm .login_formControl:hover{
+    border: 1px solid #2d2d38;
+}
+
+.loginForm .login_formControl:focus{
+    border-color: #2d2d38;
+    outline: 0;
+    border-width: 1px;
+    
+}
+
+.loginMenu .login_checkboxControl{
+    /* background-color: wheat; */
+    margin-top: 5px;
+}
+
+
+.loginMenu .loginMenu .autologin_text{
+    color: #555;
+    font-size: 13px;
+    font-weight: bolder;
+}
+
+.Menu{
+    /* background-color: aqua; */
+    margin-top: 5px;
+}
+
+.Menu ul{
+    /* background-color: aquamarine; */
+    display: flex;
+    width: 198px;
+    margin-left: 160px;
+}
+
+.Menu ul{
+    /* background-color: antiquewhite; */
+    justify-content: space-around;
+}
+
+.Menu ul .login_bar{
+    display: inline-block;
+    background-color: #aaa;
+    width: 2px;
+    height: 14px;
+    vertical-align: top;
+    margin-top: 3px;
+}
+
+.Menu ul .b{
+    color: #555;
+    font-size: 13px;
+    font-weight: bolder;
+}
+
+.Menu ul .b:hover{
+    color: #222;
+    border-bottom: 1px solid #222;
+}
+
+.Menu .logBtn{
+    background-color: #474757;
+    border: none;
+    width: 358px;
+    height: 50px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Menu .logBtn:hover{
+    background-color: #2d2d38;
+    cursor:pointer;
+}
+
+.Menu .returnMain .b{
+    /* background-color: saddlebrown; */
+    display: block;
+    width: 105px;
+    margin: 0 auto;
+    text-align: center;
+    color: #555;
+    font-size: 12px;
+    font-weight: bolder;
+
+}
+
+.Menu .returnMain .b:hover{
+    color: #222;
+    border-bottom: 1px solid #222;
+}
